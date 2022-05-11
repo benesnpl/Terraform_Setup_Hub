@@ -294,6 +294,7 @@ resource "aws_security_group" "panorama_SG" {
 
 resource "aws_instance" "Panorama" {
   ami                                  = data.aws_ami.panorama_ami.id
+  count                                = var.panorama ? 1 : 0
   instance_type                        = var.instance_type_panorama
   availability_zone                    = var.azs[1]
   key_name                             = var.ssh_key_name
